@@ -1,0 +1,24 @@
+---
+title: "edfinr Workshop - AEFP26"
+subtitle: "Education Finance Data Analysis in R"
+---
+
+Welcome to the edfinr Workshop - AEFP26 for EdFund Policy Fellows! This session builds on the February hackathon with **new material** focused on federal-level COVID recovery fund spending analysis.
+
+## Schedule
+
+| Time | Session | Materials |
+|---|---|---|
+| 10:00–10:15 | Intro to `edfinr` | [Slides](modules/01-refresher/slides.html) |
+| 10:15–10:45 | ESSER spending analysis demo | [Slides](modules/02-esser-analysis/slides.html) |
+| 10:45–11:00 | Break | |
+| 11:00–12:00 | Independent state analysis | [Exercise](exercises/state-analysis.html) |
+| 12:00–12:30 | Share out & discussion | |
+
+## Getting started
+
+1. Make sure you have R and RStudio installed
+2. Install edfinr: `install.packages("edfinr")`
+3. Open the [exercise file](exercises/state-analysis.html) when it's time for independent work
+
+See the [About](about.html) page for full setup instructions and links to prior materials.

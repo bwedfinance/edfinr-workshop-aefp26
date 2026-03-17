@@ -1,0 +1,63 @@
+/*-- scss:defaults --*/
+
+@import "_brand";
+
+$presentation-heading-font: $font-family-serif;
+$presentation-heading-color: $bw-teal;
+$presentation-font-size-root: 36px;
+$body-color: $bw-dark-gray;
+$link-color: $bw-blue;
+$code-color: $bw-blue;
+$code-block-font-size: 0.7em;
+$font-family-sans-serif: $font-family-sans;
+$font-family-monospace: $font-family-mono;
+
+/*-- scss:rules --*/
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&family=Fira+Code:wght@400;500;600&display=swap");
+
+// Section divider slides
+.reveal .slide-background-content[style*="navy"],
+section.title-slide {
+  background-color: $bw-teal;
+}
+
+.reveal .title-slide h1,
+.reveal .title-slide h2,
+.reveal .title-slide p {
+  color: #ffffff;
+}
+
+.reveal .title-slide h2 {
+  color: $bw-gold;
+}
+
+// Gold accent line under slide titles
+.reveal h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid $bw-gold;
+}
+
+// Code blocks
+.reveal pre code {
+  padding: 0.8em 1em;
+  border-radius: 4px;
+}
+
+// Footer
+.reveal .slide-footer {
+  font-size: 0.5em;
+  color: $bw-light-blue;
+}
+
+// Callout styling in slides
+.reveal .callout-tip {
+  border-left: 4px solid $bw-gold;
+}
+
+// Smaller footnotes
+.reveal .footnote,
+.reveal .aside {
+  font-size: 0.6em;
+  color: $bw-light-blue;
+}

@@ -1,0 +1,15 @@
+---
+title: "edfinr Refresher"
+---
+
+## Overview
+
+A quick refresher on the edfinr package for returning EdFund fellows. We'll recap the key functions and data structures before diving into new analysis.
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" width="100%" height="475px"></iframe>
+```
+
+[View slides in full screen](slides.html){target="_blank"}

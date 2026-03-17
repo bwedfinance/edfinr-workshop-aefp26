@@ -1,0 +1,15 @@
+---
+title: "ESSER Analysis"
+---
+
+## Overview
+
+A live-coded walkthrough of COVID recovery fund spending patterns using national F-33 data. We'll use the full dataset across multiple years to trace how federal dollars flowed to districts during the pandemic and how spending patterns shifted.
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" width="100%" height="475px"></iframe>
+```
+
+[View slides in full screen](slides.html){target="_blank"}

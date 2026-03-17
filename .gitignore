@@ -1,0 +1,15 @@
+# Quarto
+_site/
+.quarto/
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# macOS
+.DS_Store
+
+# claude
+CLAUDE.md

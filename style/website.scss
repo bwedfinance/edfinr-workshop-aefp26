@@ -1,0 +1,39 @@
+/*-- scss:defaults --*/
+
+@import "_brand";
+
+$body-bg: #ffffff;
+$body-color: $bw-dark-gray;
+$link-color: $bw-teal;
+$link-hover-color: $bw-navy;
+$font-family-base: $font-family-sans;
+$headings-font-family: $font-family-serif;
+$code-font-family: $font-family-mono;
+
+// Navbar
+$navbar-bg: $bw-teal;
+$navbar-fg: #ffffff;
+$navbar-hl: $bw-gold;
+
+/*-- scss:rules --*/
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&family=Fira+Code:wght@400;500;600&display=swap");
+
+.navbar .navbar-brand {
+  font-family: $font-family-serif;
+  font-weight: 700;
+}
+
+.callout-tip {
+  border-left-color: $bw-gold !important;
+}
+
+.callout-note {
+  border-left-color: $bw-blue !important;
+}
+
+.slide-deck {
+  border: 2px solid $bw-light-blue;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}

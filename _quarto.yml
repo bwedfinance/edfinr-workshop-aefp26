@@ -1,0 +1,35 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "modules/*/slides.qmd"
+    - "modules/*/index.qmd"
+    - "exercises/*.qmd"
+  resources:
+    - modules/01-refresher
+    - modules/02-esser-analysis
+
+website:
+  title: "edfinr Workshop - AEFP26"
+  navbar:
+    background: "#007786"
+    foreground: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: modules/01-refresher/index.qmd
+        text: Refresher
+      - href: modules/02-esser-analysis/index.qmd
+        text: ESSER Analysis
+      - href: exercises/state-analysis.qmd
+        text: Exercise
+
+format:
+  html:
+    theme: style/website.scss
+    toc: true
+
+execute:
+  freeze: auto

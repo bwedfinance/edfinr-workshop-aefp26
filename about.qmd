@@ -1,0 +1,36 @@
+---
+title: "About This Workshop"
+---
+
+## Workshop overview
+
+This workshop is designed to help EdFund Policy Fellows learn how to use [`edfinr`](https://github.com/bellwether-education/edfinr) for education policy research. In February, some fellows participated in an `edfinr` hackathon focused on developing visualizations for LinkedIn posts.
+
+Today's session covers **new material**:
+
+- **National-level data** using `geo = "all"` (the hackathon only covered single-state pulls)
+- **Full dataset** with detailed expenditure categories (the hackathon used the skinny dataset)
+- **Multi-year analysis** to track COVID recovery fund (ESSER) spending patterns
+- **CPI-adjusted comparisons** for real-dollar analysis across years
+- A structured independent analysis exercise with multiple visualization options
+
+## Prerequisites
+
+- R (4.3+) installed [via CRAN](https://cran.r-project.org)
+- An R-friendly IDE installed ([RStudio](https://posit.co/download/rstudio-desktop/) and [Positron](https://positron.posit.co/download.html) are good choices)
+- The following packages installed:
+
+```r
+install.packages(c("tidyverse", "edfinr", "scales", "viridis"))
+```
+
+- Familiarity with `dplyr` basics (`filter()`, `mutate()`, `summarize()`, `group_by()`)
+- Familiarity with `ggplot2` basics (`ggplot()`, `aes()`, `geom_point()`, `geom_col()`)
+
+## About `edfinr`
+
+`edfinr` is an R package developed by [Bellwether](https://bellwether.org) that provides easy access to education finance data from federal sources, including the F-33 Annual Survey of School System Finances, the Common Core of Data, and the American Community Survey. It's designed for education policy researchers and analysts who want to work with school finance data without wrestling with raw Census Bureau files.
+
+## About the instructor
+
+**Alex Spurrier** is an Associate Partner at Bellwether and a co-author/maintainer of `edfinr`.
