@@ -1,0 +1,163 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "edfinr Workshop - AEFP26",
+    "section": "",
+    "text": "Welcome to the edfinr Workshop - AEFP26 for EdFund Policy Fellows! This session builds on the February hackathon with new material focused on federal-level COVID recovery fund spending analysis."
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "edfinr Workshop - AEFP26",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\nTime\nSession\nMaterials\n\n\n\n\n10:00–10:15\nIntro to edfinr\nSlides\n\n\n10:15–10:45\nESSER spending analysis demo\nSlides\n\n\n10:45–11:00\nBreak\n\n\n\n11:00–12:00\nIndependent state analysis\nExercise\n\n\n12:00–12:30\nShare out & discussion"
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "edfinr Workshop - AEFP26",
+    "section": "Getting started",
+    "text": "Getting started\n\nMake sure you have R and RStudio installed\nInstall edfinr: install.packages(\"edfinr\")\nOpen the exercise file when it’s time for independent work\n\nSee the About page for full setup instructions and links to prior materials."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About This Workshop",
+    "section": "",
+    "text": "This workshop is designed to help EdFund Policy Fellows learn how to use edfinr for education policy research. In February, some fellows participated in an edfinr hackathon focused on developing visualizations for LinkedIn posts.\nToday’s session covers new material:\n\nNational-level data using geo = \"all\" (the hackathon only covered single-state pulls)\nFull dataset with detailed expenditure categories (the hackathon used the skinny dataset)\nMulti-year analysis to track COVID recovery fund (ESSER) spending patterns\nCPI-adjusted comparisons for real-dollar analysis across years\nA structured independent analysis exercise with multiple visualization options"
+  },
+  {
+    "objectID": "about.html#workshop-overview",
+    "href": "about.html#workshop-overview",
+    "title": "About This Workshop",
+    "section": "",
+    "text": "This workshop is designed to help EdFund Policy Fellows learn how to use edfinr for education policy research. In February, some fellows participated in an edfinr hackathon focused on developing visualizations for LinkedIn posts.\nToday’s session covers new material:\n\nNational-level data using geo = \"all\" (the hackathon only covered single-state pulls)\nFull dataset with detailed expenditure categories (the hackathon used the skinny dataset)\nMulti-year analysis to track COVID recovery fund (ESSER) spending patterns\nCPI-adjusted comparisons for real-dollar analysis across years\nA structured independent analysis exercise with multiple visualization options"
+  },
+  {
+    "objectID": "about.html#prerequisites",
+    "href": "about.html#prerequisites",
+    "title": "About This Workshop",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nR (4.3+) installed via CRAN\nAn R-friendly IDE installed (RStudio and Positron are good choices)\nThe following packages installed:\n\ninstall.packages(c(\"tidyverse\", \"edfinr\", \"scales\", \"viridis\"))\n\nFamiliarity with dplyr basics (filter(), mutate(), summarize(), group_by())\nFamiliarity with ggplot2 basics (ggplot(), aes(), geom_point(), geom_col())"
+  },
+  {
+    "objectID": "about.html#about-edfinr",
+    "href": "about.html#about-edfinr",
+    "title": "About This Workshop",
+    "section": "About edfinr",
+    "text": "About edfinr\nedfinr is an R package developed by Bellwether that provides easy access to education finance data from federal sources, including the F-33 Annual Survey of School System Finances, the Common Core of Data, and the American Community Survey. It’s designed for education policy researchers and analysts who want to work with school finance data without wrestling with raw Census Bureau files."
+  },
+  {
+    "objectID": "about.html#about-the-instructor",
+    "href": "about.html#about-the-instructor",
+    "title": "About This Workshop",
+    "section": "About the instructor",
+    "text": "About the instructor\nAlex Spurrier is an Associate Partner at Bellwether and a co-author/maintainer of edfinr."
+  },
+  {
+    "objectID": "exercises/state-analysis.html",
+    "href": "exercises/state-analysis.html",
+    "title": "COVID Fund Spending Analysis",
+    "section": "",
+    "text": "By the end of this exercise, you will reproduce and extend the COVID recovery fund scatter plot from the slides, analyzing the relationship between student poverty and ESSER spending in a state of your choice.\n\n\n\n\n\n\nNoteSharing your work\n\n\n\nSave your favorite plot using the naming convention firstname_analysis_description.png and upload it to the shared Google Drive folder."
+  },
+  {
+    "objectID": "exercises/state-analysis.html#learning-objective",
+    "href": "exercises/state-analysis.html#learning-objective",
+    "title": "COVID Fund Spending Analysis",
+    "section": "",
+    "text": "By the end of this exercise, you will reproduce and extend the COVID recovery fund scatter plot from the slides, analyzing the relationship between student poverty and ESSER spending in a state of your choice.\n\n\n\n\n\n\nNoteSharing your work\n\n\n\nSave your favorite plot using the naming convention firstname_analysis_description.png and upload it to the shared Google Drive folder."
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-1-setup",
+    "href": "exercises/state-analysis.html#part-1-setup",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 1: Setup",
+    "text": "Part 1: Setup\nLoad your libraries and pick a state. We’ll start with a single year to explore the data before scaling up to multi-year analysis.\nPull a single year of full data for your state:\n\nstate_data &lt;- get_finance_data(\n  yr = \"2022\",\n  geo = my_state,\n  dataset_type = \"full\"\n)\n\nℹ Downloading education finance data...\n\n\n✔ Download complete.\n\n\nTake a quick look at what you have:\n\nglimpse(state_data)\n\nRows: 219\nColumns: 89\n$ ncesid                     &lt;chr&gt; \"1300001\", \"1300005\", \"1300023\", \"1300060\",…\n$ year                       &lt;chr&gt; \"2022\", \"2022\", \"2022\", \"2022\", \"2022\", \"20…\n$ state                      &lt;chr&gt; \"GA\", \"GA\", \"GA\", \"GA\", \"GA\", \"GA\", \"GA\", \"…\n$ dist_name                  &lt;chr&gt; \"Troup County\", \"State Charter Schools Ii- …\n$ enroll                     &lt;dbl&gt; 12139, 171, 331, 3483, 1610, 49994, 2119, 3…\n$ rev_total_pp               &lt;dbl&gt; 15312.79, 12947.37, 19836.86, 16470.86, 157…\n$ rev_local_pp               &lt;dbl&gt; 6.280239e+03, 1.929825e+02, 6.042296e+00, 6…\n$ rev_state_pp               &lt;dbl&gt; 6228.088, 11210.526, 11963.746, 6130.635, 9…\n$ rev_fed_pp                 &lt;dbl&gt; 2804.4669, 1543.8596, 7867.0695, 3947.4591,…\n$ rev_total                  &lt;dbl&gt; 185882000, 2214000, 6566000, 57368000, 2542…\n$ rev_local                  &lt;dbl&gt; 76235815.67, 33000.00, 2000.00, 22266000.00…\n$ rev_state                  &lt;dbl&gt; 75602760, 1917000, 3960000, 21353000, 14610…\n$ rev_fed                    &lt;dbl&gt; 34043424, 264000, 2604000, 13749000, 610523…\n$ rev_total_unadj            &lt;dbl&gt; 188377000, 2214000, 6566000, 57368000, 2544…\n$ rev_local_unadj            &lt;dbl&gt; 76470000, 33000, 2000, 22266000, 4714000, 9…\n$ rev_state_unadj            &lt;dbl&gt; 77759000, 1917000, 3960000, 21353000, 14624…\n$ rev_fed_unadj              &lt;dbl&gt; 34148000, 264000, 2604000, 13749000, 611100…\n$ exp_cur_pp                 &lt;dbl&gt; 13129.747, 13502.924, 14356.495, 13928.223,…\n$ rev_exp_pp_diff            &lt;dbl&gt; 2183.0464, -555.5556, 5480.3625, 2542.6357,…\n$ exp_cur_st_loc             &lt;dbl&gt; 127752000, 2046000, 2710000, 36872000, 1819…\n$ exp_cur_fed                &lt;dbl&gt; 31630000, 263000, 2042000, 11640000, 582200…\n$ exp_cur_resa               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ exp_cur_total              &lt;dbl&gt; 159382000, 2309000, 4752000, 48512000, 2401…\n$ cpi_sy12                   &lt;dbl&gt; 1.239316, 1.239316, 1.239316, 1.239316, 1.2…\n$ mhi                        &lt;dbl&gt; 53599, NA, NA, 43268, 38007, 77881, 43938, …\n$ mpv                        &lt;dbl&gt; 166700, NA, NA, 88500, 77100, 395300, 95600…\n$ adult_pop                  &lt;dbl&gt; 46260, NA, NA, 12283, 5468, 342199, 7324, 2…\n$ ba_plus_pop                &lt;dbl&gt; 9395, NA, NA, 1231, 621, 195971, 799, 390, …\n$ ba_plus_pct                &lt;dbl&gt; 0.2030912, NA, NA, 0.1002198, 0.1135699, 0.…\n$ total_pop                  &lt;dbl&gt; 70191, NA, NA, 18428, 8183, 502027, 11191, …\n$ student_pop                &lt;dbl&gt; 12466, NA, NA, 3423, 1476, 59900, 2100, 405…\n$ stpov_pop                  &lt;dbl&gt; 3132, NA, NA, 923, 410, 13720, 602, 149, 17…\n$ stpov_pct                  &lt;dbl&gt; 0.2512434, NA, NA, 0.2696465, 0.2777778, 0.…\n$ cong_dist                  &lt;int&gt; 1303, 1312, 1303, 1312, 1308, 1305, 1301, 1…\n$ state_leaid                &lt;chr&gt; \"GA-741\", \"GA-7830103\", \"GA-7820110\", \"GA-6…\n$ county                     &lt;chr&gt; \"Troup County\", \"Bulloch County\", \"Coweta C…\n$ cbsa                       &lt;chr&gt; \"29300\", \"44340\", \"12060\", \"N\", \"20060\", \"1…\n$ urbanicity                 &lt;fct&gt; Rural, Town, Suburb, Town, Rural, City, Rur…\n$ schlev                     &lt;chr&gt; \"03\", \"03\", \"01\", \"03\", \"03\", \"03\", \"03\", \"…\n$ lea_type                   &lt;fct&gt; Regular public school district that is not …\n$ lea_type_id                &lt;int&gt; 1, 7, 7, 1, 1, 1, 1, 1, 1, 7, 7, 7, 7, 7, 7…\n$ exp_emp_salary             &lt;dbl&gt; 89824000, 1252000, 2964000, 25939000, 12891…\n$ exp_emp_bene               &lt;dbl&gt; 36731000, 452000, 521000, 9606000, 5204000,…\n$ exp_textbooks              &lt;dbl&gt; 128000, 0, 1000, 426000, 62000, 2242000, 58…\n$ exp_utilities              &lt;dbl&gt; 2676000, 35000, 144000, 857000, 408000, 270…\n$ exp_tech_supp              &lt;dbl&gt; 4820000, 195000, 309000, 2309000, 612000, 4…\n$ exp_tech_equip             &lt;dbl&gt; 329000, 0, 0, 8000, 108000, 847000, 0, 2450…\n$ exp_pay_private_sch        &lt;dbl&gt; 0, 0, 0, 0, 0, 2235000, 0, 0, 0, 0, 0, 0, 0…\n$ exp_pay_charter_sch        &lt;dbl&gt; 420000, 0, 0, 0, 0, 626000, 0, 0, 0, 0, 0, …\n$ exp_pay_other_lea          &lt;dbl&gt; 151000, 0, 0, 0, 24000, 6000, 0, 0, 0, 3000…\n$ exp_other_sys_pay          &lt;dbl&gt; 571000, 0, 0, 0, 24000, 2867000, 0, 0, 0, 3…\n$ exp_instr_total            &lt;dbl&gt; 89832000, 1742000, 2991000, 30204000, 14401…\n$ exp_instr_sal              &lt;dbl&gt; 57263000, 1046000, 2083000, 17738000, 87370…\n$ exp_instr_bene             &lt;dbl&gt; 23650000, 357000, 521000, 7054000, 3781000,…\n$ exp_supp_stu_total         &lt;dbl&gt; 9797000, 2000, 420000, 2770000, 992000, 105…\n$ exp_supp_stu_sal           &lt;dbl&gt; 6099000, 0, 344000, 2064000, 645000, 512130…\n$ exp_supp_stu_bene          &lt;dbl&gt; 2533000, 0, 0, 388000, 143000, 12031000, 27…\n$ exp_supp_instr_total       &lt;dbl&gt; 8694000, 26000, 350000, 2544000, 1346000, 6…\n$ exp_supp_instr_sal         &lt;dbl&gt; 4318000, 21000, 170000, 1739000, 819000, 39…\n$ exp_supp_instr_bene        &lt;dbl&gt; 1714000, 0, 0, 543000, 288000, 11836000, 32…\n$ exp_supp_gen_admin_total   &lt;dbl&gt; 2186000, 22000, 156000, 862000, 598000, 139…\n$ exp_supp_gen_admin_sal     &lt;dbl&gt; 1180000, 0, 0, 328000, 234000, 3753000, 372…\n$ exp_supp_gen_admin_bene    &lt;dbl&gt; 442000, 0, 0, 87000, 75000, 1066000, 95000,…\n$ exp_supp_sch_admin_total   &lt;dbl&gt; 11226000, 298000, 226000, 2143000, 1533000,…\n$ exp_supp_sch_admin_sal     &lt;dbl&gt; 6955000, 185000, 193000, 1581000, 876000, 4…\n$ exp_supp_sch_admin_bene    &lt;dbl&gt; 2758000, 96000, 0, 477000, 345000, 14388000…\n$ exp_supp_ops_total         &lt;dbl&gt; 14111000, 196000, 326000, 3371000, 1485000,…\n$ exp_supp_ops_sal           &lt;dbl&gt; 4928000, 0, 0, 421000, 177000, 30641000, 18…\n$ exp_supp_ops_bene          &lt;dbl&gt; 1881000, 0, 0, 159000, 72000, 12727000, 850…\n$ exp_supp_trans_total       &lt;dbl&gt; 11134000, 1000, 57000, 2282000, 1383000, 42…\n$ exp_supp_trans_sal         &lt;dbl&gt; 5746000, 0, 40000, 1190000, 705000, 2135200…\n$ exp_supp_trans_bene        &lt;dbl&gt; 2293000, 0, 0, 514000, 208000, 8171000, 328…\n$ exp_central_serv_total     &lt;dbl&gt; 4731000, 23000, 225000, 1257000, 455000, 50…\n$ exp_central_serv_sal       &lt;dbl&gt; 1746000, 0, 133000, 197000, 221000, 2670300…\n$ exp_central_serv_bene      &lt;dbl&gt; 677000, 0, 0, 74000, 97000, 8744000, 92000,…\n$ exp_noninstr_food_total    &lt;dbl&gt; 7675000, 0, 0, 3178000, 1875000, 31423000, …\n$ exp_noninstr_food_sal      &lt;dbl&gt; 1590000, 0, 0, 682000, 478000, 3799000, 554…\n$ exp_noninstr_food_bene     &lt;dbl&gt; 784000, 0, 0, 309000, 195000, 1215000, 2370…\n$ exp_noninstr_ent_ops_total &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 4000, 123000, 189000, 0, …\n$ exp_noninstr_ent_ops_bene  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ exp_noninstr_other         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ exp_covid_total            &lt;dbl&gt; 13348000, 174000, 654000, 5734000, 2428000,…\n$ exp_covid_instr            &lt;dbl&gt; 8514000, 174000, 474000, 3756000, 1741000, …\n$ exp_covid_supp             &lt;dbl&gt; 4788000, 0, 180000, 1943000, 523000, 670580…\n$ exp_covid_cap_out          &lt;dbl&gt; 203000, 0, 1000, 650000, 156000, 1668000, 0…\n$ exp_covid_tech_supp        &lt;dbl&gt; 2671000, 156000, 24000, 1684000, 73000, 178…\n$ exp_covid_tech_equip       &lt;dbl&gt; 0, 0, 0, 8000, 0, 0, 0, 233000, 0, 0, 0, 0,…\n$ exp_covid_supp_plant       &lt;dbl&gt; 674000, 0, 55000, 1073000, 74000, 14978000,…\n$ exp_covid_food             &lt;dbl&gt; 47000, 0, 0, 35000, 164000, 2932000, 83000,…"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-2-select-and-clean",
+    "href": "exercises/state-analysis.html#part-2-select-and-clean",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 2: Select and clean",
+    "text": "Part 2: Select and clean\nThe full dataset has hundreds of columns. Replicate the select() call from the slides, picking the variables we need for COVID spending analysis:\n\ncovid_exp &lt;- state_data |&gt;\n  select(\n    # identifiers and enrollment\n    ncesid, year, state, cbsa, cong_dist, dist_name, enroll,\n    # revenue per-pupil\n    ___,\n    # socio-economic variables\n    ___,\n    # expenditure data\n    ___\n  )\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ncovid_exp &lt;- state_data |&gt;\n  select(\n    # identifiers and enrollment\n    ncesid, year, state, cbsa, cong_dist, dist_name, enroll,\n    # revenue per-pupil\n    rev_total_pp, rev_local_pp, rev_state_pp, rev_fed_pp,\n    # socio-economic variables\n    mhi, mpv, ba_plus_pct, stpov_pct, urbanicity,\n    # expenditure data\n    exp_cur_total, exp_covid_total, exp_covid_instr\n  )"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-3-per-pupil-calculations",
+    "href": "exercises/state-analysis.html#part-3-per-pupil-calculations",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 3: Per-pupil calculations",
+    "text": "Part 3: Per-pupil calculations\nThe expenditure columns are totals, not per-pupil. Use across() to convert all of them at once, then calculate the instructional share of COVID spending:\n\ncovid_exp &lt;- covid_exp |&gt;\n  mutate(\n    # convert all exp_ columns to per-pupil\n    across(\n      ___,\n      ___,\n      .names = \"___\"\n    ),\n    # what share of COVID funds went to instruction?\n    exp_covid_instr_pct = ___\n  )\n\nThis is the key across() pattern from the slides:\n\nstarts_with(\"exp_\") selects all expenditure columns\nThe lambda \\(x) x / enroll divides each by enrollment\n.names = \"{.col}_pp\" creates new columns with a _pp suffix\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ncovid_exp &lt;- covid_exp |&gt;\n  mutate(\n    # convert all exp_ columns to per-pupil\n    across(\n      starts_with(\"exp_\"),\n      \\(x) x / enroll,\n      .names = \"{.col}_pp\"\n    ),\n    # what share of COVID funds went to instruction?\n    exp_covid_instr_pct = exp_covid_instr / exp_covid_total\n  )"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-4-build-the-scatter-plot",
+    "href": "exercises/state-analysis.html#part-4-build-the-scatter-plot",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 4: Build the scatter plot",
+    "text": "Part 4: Build the scatter plot\nESSER funds were allocated via Title I formulas. Did higher-poverty districts in your state actually spend more? Build a scatter plot to find out.\nFill in the aesthetics and layers:\n\nggplot(data = covid_exp) +\n  geom_point(\n    aes(\n      x = ___,\n      y = ___,\n      color = ___,\n      size = ___\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = ___,\n      y = ___\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  theme_bw() +\n  labs(\n    x = \"Student Poverty %\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )\n\nWhat to look for:\n\nSlope direction: Do higher-poverty districts spend more COVID funds per pupil?\nColor gradient: How much variation is there in the instructional share?\nSize: Do larger districts behave differently than smaller ones?\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nggplot(data = covid_exp) +\n  geom_point(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp,\n      color = exp_covid_instr_pct,\n      size = enroll\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  theme_bw() +\n  labs(\n    x = \"Student Poverty %\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-5-extend-to-multi-year-stretch-goal",
+    "href": "exercises/state-analysis.html#part-5-extend-to-multi-year-stretch-goal",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 5: Extend to multi-year (stretch goal)",
+    "text": "Part 5: Extend to multi-year (stretch goal)\nIn the slides, we used range syntax to pull multiple years and facet_wrap() to compare them. Try it for your state.\nPull multi-year data and apply the same pipeline:\n\nstate_multi &lt;- get_finance_data(\n  yr = \"2020:2022\",\n  geo = my_state,\n  dataset_type = \"full\"\n)\n\n\n# Apply the same select → across → mutate pipeline\ncovid_multi &lt;- state_multi |&gt;\n  select(\n    # TODO: same columns as Part 2\n  ) |&gt;\n  mutate(\n    across(\n      # TODO: same per-pupil calculation as Part 3\n    ),\n    exp_covid_instr_pct = exp_covid_instr / exp_covid_total\n  )\n\nNow add facet_wrap(~year) to your scatter plot to see how COVID spending evolved from 2020 to 2022:\n\n# TODO: Copy your scatter plot from Part 4 and add:\n# - Change data to covid_multi\n# - Add facet_wrap(~year) before theme_bw()\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ncovid_multi &lt;- state_multi |&gt;\n  select(\n    ncesid, year, state, cbsa, cong_dist, dist_name, enroll,\n    rev_total_pp, rev_local_pp, rev_state_pp, rev_fed_pp,\n    mhi, mpv, ba_plus_pct, stpov_pct, urbanicity,\n    exp_cur_total, exp_covid_total, exp_covid_instr\n  ) |&gt;\n  mutate(\n    across(\n      starts_with(\"exp_\"),\n      \\(x) x / enroll,\n      .names = \"{.col}_pp\"\n    ),\n    exp_covid_instr_pct = exp_covid_instr / exp_covid_total\n  )\n\nggplot(data = covid_multi) +\n  geom_point(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp,\n      color = exp_covid_instr_pct,\n      size = enroll\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  facet_wrap(~year) +\n  theme_bw() +\n  labs(\n    x = \"Student Poverty %\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-6-extension-challenge",
+    "href": "exercises/state-analysis.html#part-6-extension-challenge",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 6: Extension challenge",
+    "text": "Part 6: Extension challenge\nEveryone should complete the scatter plot in Parts 4-5 first. Then pick one of the following extensions:\n\nOption A: Compare multiple states\nPull data for multiple states in one call using a comma-separated list in geo. How does the poverty-spending relationship differ across states?\n\n# TODO: Update geo to pull multiple states using a comma list (no spaces)\n# e.g., geo = \"GA,TX,NC\"\n# Then facet by state (or facet_grid(state ~ year) for both dimensions)\n\n\n\n\n\n\n\nTipOption A Solution\n\n\n\n\n\n\nmy_states &lt;- \"GA,TX,NC\"\n\ncombined_raw &lt;- get_finance_data(\n  yr = \"2020:2022\",\n  geo = my_states,\n  dataset_type = \"full\"\n)\n\ncombined &lt;- combined_raw |&gt;\n  select(\n    ncesid, year, state, cbsa, cong_dist, dist_name, enroll,\n    rev_total_pp, rev_local_pp, rev_state_pp, rev_fed_pp,\n    mhi, mpv, ba_plus_pct, stpov_pct, urbanicity,\n    exp_cur_total, exp_covid_total, exp_covid_instr\n  ) |&gt;\n  mutate(\n    across(\n      starts_with(\"exp_\"),\n      \\(x) x / enroll,\n      .names = \"{.col}_pp\"\n    ),\n    exp_covid_instr_pct = exp_covid_instr / exp_covid_total\n  )\n\nggplot(data = combined) +\n  geom_point(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp,\n      color = exp_covid_instr_pct,\n      size = enroll\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  facet_grid(state ~ year) +\n  theme_bw() +\n  labs(\n    x = \"Student Poverty %\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )\n\n\n\n\n\n\nOption B: Swap the variable\nReplace stpov_pct on the x-axis with a different socio-economic variable. How does the story change?\n\n# TODO: Replace stpov_pct with mhi (median household income) or\n# ba_plus_pct (% adults with BA+). Update the x-axis label.\n# Does the relationship flip?\n\n\n\n\n\n\n\nTipOption B Solution\n\n\n\n\n\n\nggplot(data = covid_multi) +\n  geom_point(\n    aes(\n      x = mhi,\n      y = exp_covid_total_pp,\n      color = exp_covid_instr_pct,\n      size = enroll\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = mhi,\n      y = exp_covid_total_pp\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  facet_wrap(~year) +\n  theme_bw() +\n  labs(\n    x = \"Median Household Income\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )\n\n\n\n\n\n\nOption C: Within-state geography\nUse cbsa or cong_dist to facet by metro area or congressional district, showing within-state variation in COVID spending patterns.\n\n# TODO: Filter to districts with enough enrollment to be meaningful (e.g., &gt; 500)\n# Use facet_wrap(~cbsa) or facet_wrap(~cong_dist) to show geographic variation\n# You may need to filter to a subset of geographies that have enough districts\n\n\n\n\n\n\n\nTipOption C Solution\n\n\n\n\n\n\n# Filter to 2022 and districts with meaningful enrollment\ngeo_data &lt;- covid_multi |&gt;\n  filter(year == 2022, enroll &gt; 500, !is.na(cong_dist))\n\n# Keep only congressional districts with 5+ districts for readable facets\ncds_with_data &lt;- geo_data |&gt;\n  count(cong_dist) |&gt;\n  filter(n &gt;= 5) |&gt;\n  pull(cong_dist)\n\ngeo_data |&gt;\n  filter(cong_dist %in% cds_with_data) |&gt;\n  ggplot() +\n  geom_point(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp,\n      color = exp_covid_instr_pct,\n      size = enroll\n    ),\n    alpha = .6\n  ) +\n  geom_smooth(\n    aes(\n      x = stpov_pct,\n      y = exp_covid_total_pp\n    ),\n    method = \"lm\", color = \"orange\"\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_color_viridis(labels = label_percent()) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  facet_wrap(~cong_dist) +\n  theme_bw() +\n  labs(\n    x = \"Student Poverty %\",\n    y = \"Total COVID Fund Expenditures Per-Pupil\",\n    size = \"Enrollment\",\n    color = \"Instructional Exp. as % of\\nTotal COVID Fund Exp.\",\n    caption = \"Data Source: edfinr\"\n  )"
+  },
+  {
+    "objectID": "exercises/state-analysis.html#part-7-save-and-share",
+    "href": "exercises/state-analysis.html#part-7-save-and-share",
+    "title": "COVID Fund Spending Analysis",
+    "section": "Part 7: Save and share",
+    "text": "Part 7: Save and share\nSave your best plot and upload it to the shared folder:\n\n# paste this code right after your selected plot code\n# run your plot code, then fill in your analysis description,\n# then run the ggsave command - this will save the png of your\n# plot to your current working directory.\n\n# fill this in with a pithy snake_case description of your analysis\n# example: analysis of kentucky and ohio covid expenditures might be\n# \"ky_oh_covid_exp\"\nanalysis_description &lt;- \"\"\n\nggsave(\n  filename = paste0(your_name, \"_\", analysis_description, \".png\"),\n  units = \"in\",\n  width = 10,\n  height = 6\n)\n\nUpload your saved plot to the shared Google Drive folder.\n\nQuality checklist\nBefore you upload, check:\n\nDoes the title tell the story?\nAre axes labeled clearly with labs()?\nAre dollar values formatted with scales::label_dollar()?\nWould a subtitle or caption add useful context?"
+  },
+  {
+    "objectID": "modules/01-refresher/index.html",
+    "href": "modules/01-refresher/index.html",
+    "title": "edfinr Refresher",
+    "section": "",
+    "text": "A quick refresher on the edfinr package for returning EdFund fellows. We’ll recap the key functions and data structures before diving into new analysis."
+  },
+  {
+    "objectID": "modules/01-refresher/index.html#overview",
+    "href": "modules/01-refresher/index.html#overview",
+    "title": "edfinr Refresher",
+    "section": "",
+    "text": "A quick refresher on the edfinr package for returning EdFund fellows. We’ll recap the key functions and data structures before diving into new analysis."
+  },
+  {
+    "objectID": "modules/01-refresher/index.html#slides",
+    "href": "modules/01-refresher/index.html#slides",
+    "title": "edfinr Refresher",
+    "section": "Slides",
+    "text": "Slides\n\nView slides in full screen"
+  },
+  {
+    "objectID": "modules/02-esser-analysis/index.html",
+    "href": "modules/02-esser-analysis/index.html",
+    "title": "ESSER Analysis",
+    "section": "",
+    "text": "A live-coded walkthrough of COVID recovery fund spending patterns using national F-33 data. We’ll use the full dataset across multiple years to trace how federal dollars flowed to districts during the pandemic and how spending patterns shifted."
+  },
+  {
+    "objectID": "modules/02-esser-analysis/index.html#overview",
+    "href": "modules/02-esser-analysis/index.html#overview",
+    "title": "ESSER Analysis",
+    "section": "",
+    "text": "A live-coded walkthrough of COVID recovery fund spending patterns using national F-33 data. We’ll use the full dataset across multiple years to trace how federal dollars flowed to districts during the pandemic and how spending patterns shifted."
+  },
+  {
+    "objectID": "modules/02-esser-analysis/index.html#slides",
+    "href": "modules/02-esser-analysis/index.html#slides",
+    "title": "ESSER Analysis",
+    "section": "Slides",
+    "text": "Slides\n\nView slides in full screen"
+  }
+]
