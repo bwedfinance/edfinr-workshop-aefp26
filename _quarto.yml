@@ -11,6 +11,7 @@ project:
 
 website:
   title: "edfinr Workshop - AEFP26"
+  repo-url: https://github.com/bwedfinance/edfinr-workshop-aefp26
   navbar:
     background: "#007786"
     foreground: "#ffffff"
@@ -25,6 +26,9 @@ website:
         text: ESSER Analysis
       - href: exercises/state-analysis.qmd
         text: Exercise
+    tools:
+      - icon: github
+        href: https://github.com/bwedfinance/edfinr-workshop-aefp26
 
 format:
   html:
