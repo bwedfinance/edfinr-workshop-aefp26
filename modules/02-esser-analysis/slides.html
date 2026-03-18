@@ -95,7 +95,7 @@
     code span.vs { color: #008000; } /* VerbatimString */
     code span.wa { color: #696969; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f079750129109f419c4706ec17df57ae.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-9ecba3e469c394a3c6e584b8ce74854c.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -202,13 +202,14 @@
   <p class="date">2026-03-17</p>
 </section>
 <section>
-<section class="title-slide slide level1 center" data-background-color="#007786">
+<section class="title-slide slide level1 white-text center" data-background-color="#0D525A">
 <h1>The story in the data</h1>
 
 </section>
 <section class="slide level2">
 <h2>What happened to K-12 funding during COVID?</h2>
 <p>Congress passed three rounds of <strong>Elementary and Secondary School Emergency Relief</strong> (ESSER) funds:</p>
+<p><br></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -239,6 +240,7 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p><strong>$190 billion</strong> in new federal K-12 spending – unprecedented.</p>
 <aside class="notes">
 <p>Set the context. This is more federal money than had ever flowed to K-12 in such a short period. Fellows in education policy should understand the scale.</p>
@@ -267,15 +269,15 @@
 <section class="slide level2">
 <h2>Our analysis plan</h2>
 <ol type="1">
-<li>Pull multi-year pandemic-era data with <strong>range syntax</strong></li>
-<li>Clean and select key variables</li>
+<li>Pull multi-year pandemic-era data via <code>edfinr</code></li>
+<li><code>select()</code> key variables for analysis</li>
 <li>Calculate per-pupil expenditures with <code>across()</code></li>
-<li>Explore COVID spending vs.&nbsp;student poverty</li>
-<li>Filter to a single state for deeper analysis</li>
+<li>Explore COVID spending vs.&nbsp;student poverty via <code>ggplot2</code></li>
+<li><code>filter()</code> to a single state for deeper analysis</li>
 </ol>
 </section></section>
 <section>
-<section class="title-slide slide level1 center" data-background-color="#007786">
+<section class="title-slide slide level1 white-text center" data-background-color="#0D525A">
 <h1>Getting the data</h1>
 
 </section>
@@ -283,7 +285,7 @@
 <h2>Pulling pandemic-era data</h2>
 <p>edfinr’s <code>yr</code> argument accepts a <strong>range string</strong> — no need for <code>map()</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>covid_yrs <span class="ot">&lt;-</span> <span class="fu">get_finance_data</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>covid_yrs <span class="ot">&lt;-</span> <span class="fu">get_finance_data</span>(</span>
 <span id="cb1-2"><a></a>  <span class="at">yr =</span> <span class="st">"2020:2022"</span>,</span>
 <span id="cb1-3"><a></a>  <span class="at">dataset_type =</span> <span class="st">"full"</span></span>
 <span id="cb1-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -392,7 +394,7 @@
       }</style></aside>
 </section></section>
 <section>
-<section class="title-slide slide level1 center" data-background-color="#007786">
+<section class="title-slide slide level1 white-text center" data-background-color="#0D525A">
 <h1>COVID spending and poverty</h1>
 
 </section>
@@ -436,7 +438,7 @@
 <h2>Adding layers</h2>
 <p>Now we add a trend line, clean up the scales, and facet by year:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|1-6|7-14|15-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|1-6|7-14|15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>  <span class="fu">geom_smooth</span>(</span>
 <span id="cb6-2"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb6-3"><a></a>      <span class="at">x =</span> stpov_pct,</span>
 <span id="cb6-4"><a></a>      <span class="at">y =</span> exp_covid_total_pp</span>
@@ -450,8 +452,7 @@
 <span id="cb6-12"><a></a>    <span class="at">max_size =</span> <span class="dv">10</span>,</span>
 <span id="cb6-13"><a></a>    <span class="at">labels =</span> <span class="fu">label_comma</span>()</span>
 <span id="cb6-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-15"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-16"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-15"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><code>geom_smooth(method = "lm")</code> adds a <strong>linear regression</strong> line</li>
@@ -476,16 +477,17 @@
 <h2>The full picture</h2>
 <p>Putting it all together with labels:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|1-2|3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-2"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>)</span>
-<span id="cb7-3"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-5"><a></a>    <span class="at">x =</span> <span class="st">"Student Poverty %"</span>,</span>
-<span id="cb7-6"><a></a>    <span class="at">y =</span> <span class="st">"Total COVID Fund Expenditures Per-Pupil"</span>,</span>
-<span id="cb7-7"><a></a>    <span class="at">size =</span> <span class="st">"Enrollment"</span>,</span>
-<span id="cb7-8"><a></a>    <span class="at">color =</span> <span class="st">"Instructional Exp. as % of</span><span class="sc">\n</span><span class="st">Total COVID Fund Exp."</span>,</span>
-<span id="cb7-9"><a></a>    <span class="at">caption =</span> <span class="st">"Data Source: edfinr"</span></span>
-<span id="cb7-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|1-4|5-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-3"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>)</span>
+<span id="cb7-4"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-6"><a></a>    <span class="at">x =</span> <span class="st">"Student Poverty %"</span>,</span>
+<span id="cb7-7"><a></a>    <span class="at">y =</span> <span class="st">"Total COVID Fund Expenditures Per-Pupil"</span>,</span>
+<span id="cb7-8"><a></a>    <span class="at">size =</span> <span class="st">"Enrollment"</span>,</span>
+<span id="cb7-9"><a></a>    <span class="at">color =</span> <span class="st">"Instructional Exp. as % of</span><span class="sc">\n</span><span class="st">Total COVID Fund Exp."</span>,</span>
+<span id="cb7-10"><a></a>    <span class="at">caption =</span> <span class="st">"Data Source: edfinr"</span></span>
+<span id="cb7-11"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Show the complete rendered plot if you have a pre-rendered version. Walk through the interpretation: upward slope confirms higher-poverty districts spent more COVID funds per pupil, as intended by the Title I formula allocation. The color gradient shows variation in how districts used the money.</p>
@@ -502,18 +504,22 @@
       }</style></aside>
 </section>
 <section class="slide level2">
-<h2>Reading the chart</h2>
-<p>What should you see?</p>
+<h2>What should we expect to see?</h2>
 <ul>
 <li><strong>Upward slope</strong>: Higher-poverty districts spent more COVID funds per pupil (Title I formula working as intended)</li>
-<li><strong>Color gradient</strong>: Wide variation in instructional share — some districts used ESSER mostly for instruction, others for facilities or staffing</li>
+<li><strong>Color gradient</strong>: Wide variation in instructional share — some districts used ESSER mostly for instruction, others didn’t</li>
 <li><strong>Size variation</strong>: Smaller districts show more extreme values (both high and low)</li>
 <li><strong>Year panels</strong>: Spending increases from 2020 to 2022 as districts drew down ESSER II and III</li>
 </ul>
-<p>The scatter plot tells a <strong>richer story</strong> than a bar chart — we see the relationship between poverty and spending, not just totals.</p>
+</section>
+<section class="slide level2">
+<h2>Here’s the result!</h2>
+<div style="text-align: center;">
+<p><img data-src="../../images/esser_plot_nationwide.png" style="width:80.0%"></p>
+</div>
 </section></section>
 <section>
-<section class="title-slide slide level1 center" data-background-color="#007786">
+<section class="title-slide slide level1 white-text center" data-background-color="#0D525A">
 <h1>Zooming into one state</h1>
 
 </section>
@@ -521,7 +527,7 @@
 <h2>Filtering to Kentucky</h2>
 <p>The same analysis works for any state with a single <code>filter()</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> covid_exp <span class="sc">|&gt;</span> <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"KY"</span>)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> covid_exp <span class="sc">|&gt;</span> <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"KY"</span>)) <span class="sc">+</span></span>
 <span id="cb8-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb8-3"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb8-4"><a></a>      <span class="at">x =</span> stpov_pct,</span>
@@ -545,7 +551,7 @@
 <span id="cb8-22"><a></a>    <span class="at">max_size =</span> <span class="dv">10</span>,</span>
 <span id="cb8-23"><a></a>    <span class="at">labels =</span> <span class="fu">label_comma</span>()</span>
 <span id="cb8-24"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-25"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year) <span class="sc">+</span></span>
 <span id="cb8-26"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb8-27"><a></a>  <span class="fu">theme</span>(</span>
 <span id="cb8-28"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>)</span>
@@ -574,11 +580,17 @@
       }</style></aside>
 </section>
 <section class="slide level2">
+<h2>Zooming in on one state = a more interesting story</h2>
+<div style="text-align: center;">
+<p><img data-src="../../images/esser_plot_kentucky.png" style="width:80.0%"></p>
+</div>
+</section>
+<section class="slide level2">
 <h2>Saving your work</h2>
 <p>Use <code>ggsave()</code> to export publication-ready plots:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggsave</span>(</span>
-<span id="cb9-2"><a></a>  <span class="st">"covid_analysis_ky.png"</span>,</span>
+<span id="cb9-2"><a></a>  <span class="st">"esser_plot_kentucky.png"</span>,</span>
 <span id="cb9-3"><a></a>  <span class="at">units =</span> <span class="st">"in"</span>,</span>
 <span id="cb9-4"><a></a>  <span class="at">height =</span> <span class="dv">6</span>,</span>
 <span id="cb9-5"><a></a>  <span class="at">width =</span> <span class="dv">10</span></span>
@@ -599,10 +611,10 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2" data-background-color="#007786">
+<section class="slide level2 white-text" data-background-color="#0D525A">
 <h2>Your turn!</h2>
 <h3>Time for independent state analysis</h3>
-<p>Open the exercise file and pick a state to explore.</p>
+<p>Open the exercise page on the workshop website and pick a state to explore.</p>
 
 
 </section></section>
@@ -929,7 +941,7 @@
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/bwedfinance\.github\.io\/edfinr-workshop-aefp26\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

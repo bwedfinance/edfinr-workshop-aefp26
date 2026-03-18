@@ -72,12 +72,8 @@ ggplot(data = covid_exp) +
     max_size = 10,
     labels = label_comma()
     ) +
-  # make multiple plots
-  facet_wrap(
-    # create a plot for each year of data
-    ~year, 
-    # display plots in 2 rows
-    nrow = 2) +
+  # create a plot for each year of data
+  facet_wrap(~year) +
   # set theme
   theme_bw() + 
   theme(
@@ -95,7 +91,7 @@ ggplot(data = covid_exp) +
   ) 
 
 ggsave(
-  "covid_analysis_nationwide.png",
+  "esser_plot_nationwide.png",
   units = "in", 
   height = 6,
   width = 10,
@@ -127,7 +123,7 @@ ggplot(data = covid_exp |> filter(state == "KY")) +
     max_size = 10,
     labels = label_comma()
     ) +
-  facet_wrap(~year, nrow = 2) +
+  facet_wrap(~year) +
   theme_bw() + 
   theme(
       plot.caption = element_text(hjust = 0)
@@ -144,7 +140,7 @@ ggplot(data = covid_exp |> filter(state == "KY")) +
   ) 
 
 ggsave(
-  "covid_analysis_ky.png",
+  "esser_plot_kentucky.png",
   units = "in", 
   height = 6,
   width = 10,

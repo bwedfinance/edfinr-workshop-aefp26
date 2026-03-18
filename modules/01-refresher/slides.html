@@ -95,7 +95,7 @@
     code span.vs { color: #008000; } /* VerbatimString */
     code span.wa { color: #696969; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f079750129109f419c4706ec17df57ae.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-9ecba3e469c394a3c6e584b8ce74854c.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -202,7 +202,7 @@
   <p class="date">2026-03-18</p>
 </section>
 <section>
-<section class="title-slide slide level1 center" data-background-color="#007786">
+<section class="title-slide slide level1 white-text center" data-background-color="#0D525A">
 <h1>Welcome!</h1>
 
 </section>
@@ -229,8 +229,33 @@
           display:block!important;
       }</style></aside>
 </section>
+<section class="slide level2 white-text" data-background-color="#0D525A">
+<h2>About Bellwether</h2>
+<p>Bellwether envisions a future where <em>all</em> young people have access to an <span style="color: #FFB653;"><strong>excellent</strong></span> education, and live lives <span style="color: #FFB653;"><strong>filled with opportunity</strong></span>.</p>
+<p>Bellwether is a national nonprofit that works hand in hand with education leaders and organizations to accelerate their impact, inform and influence policy and program design, and share what we learn along the way.</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><img data-src="../../images/spurrier-circle.png" style="width: 300px;"></p>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<p><strong>Alex Spurrier</strong></p>
+<p><em>Associate Partner</em> <br> <a href="mailto:Alex.Spurrier@bellwether.org">Alex.Spurrier@bellwether.org</a> <br> <a href="https://www.linkedin.com/in/alspur">www.linkedin.com/in/alspur</a></p>
+</div></div>
+</section>
+<section class="slide level2 white-text" data-background-color="#0D525A">
+<h2>About Our State School Finance Initiative</h2>
+<p>Education finance <span style="color: #FFB653;"><strong>sets the foundation</strong></span> for what is possible in every school in the country. Education finance equity is essential to leveling the playing field for marginalized students in under-resourced schools and communities.</p>
+<p><br></p>
+<p>Bellwether’s work in state education finance equity aims to improve funding systems, state by state, through:</p>
+<ul>
+<li><span style="color: #FFB653;"><strong>Analyses</strong></span> that shape the public conversation on education finance and help advocates and policymakers understand and improve finance policies in their states.</li>
+<li><span style="color: #FFB653;"><strong>Trainings</strong></span> that equip state advocates with policy knowledge and data modeling skills to unlock the potential for policy reforms.</li>
+<li><span style="color: #FFB653;"><strong>Capacity-building</strong></span> support, policy advising, and technical modeling assistance for state advocacy groups or public agencies in states on the precipice of enacting change.</li>
+</ul>
+</section>
 <section class="slide level2">
-<h2>The F-33 survey</h2>
+<h2>What is the F-33 survey?</h2>
 <p>The <strong>Annual Survey of School System Finances</strong> (F-33) is administered by the U.S. Census Bureau on behalf of NCES.</p>
 <ul>
 <li>Covers <strong>all ~13,000 school districts</strong> in the U.S. – a universe, not a sample</li>
@@ -238,7 +263,8 @@
 <li>Form is fairly consistent year-to-year; recent additions include <strong>COVID relief expenditure</strong> tracking</li>
 <li>The <strong>only source</strong> of comparable, highly-detailed LEA-level finance data</li>
 </ul>
-<p>Sounds great…so what’s the catch?</p>
+<p><br></p>
+<p><strong>Sounds great! So what’s the catch?</strong></p>
 <aside class="notes">
 <p>Fuller treatment of the F-33 for AEFP audience members who may not have worked with it directly. Emphasize “universe not sample” and the uniqueness of the data source. The hook at the end sets up the next slide on data messiness.</p>
 <style type="text/css">
@@ -254,13 +280,20 @@
       }</style></aside>
 </section>
 <section class="slide level2">
-<h2>The catch: F-33 data is messy</h2>
+<h2>It turns out that F-33 data is messy</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br></p>
+<p><img data-src="../../images/kondo.png" style="width: 500px;"></p>
+</div><div class="column" style="width:60%;">
+<p><br></p>
 <p><strong>Census version</strong> issues:</p>
 <ul>
 <li>Revenue and expenditure values need a <strong>×1,000 multiplier</strong></li>
 <li>C24 state/local revenue adjustment applies in some states</li>
 <li><strong>No charter school LEAs</strong> included</li>
 </ul>
+<p><br></p>
 <p><strong>NCES version</strong>: long release lag time</p>
 <p><strong>Analyst judgment</strong> calls everywhere:</p>
 <ul>
@@ -268,6 +301,7 @@
 <li>Pass-through payments and tuition to other systems</li>
 <li>One-time property sales inflating local revenue</li>
 </ul>
+</div></div>
 <aside class="notes">
 <p>This motivates why a package like edfinr is valuable – you don’t want every analyst reinventing these cleaning decisions. The Census vs.&nbsp;NCES version distinction is something even experienced F-33 users may not have thought about carefully.</p>
 <style type="text/css">
@@ -284,12 +318,24 @@
 </section>
 <section class="slide level2">
 <h2>From EdBuild to edfinr</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><br></p>
 <ul>
 <li><strong>EdBuild</strong> created <code>edbuildr</code> and <code>edbuildmapr</code> – early effort to make F-33 data accessible in R</li>
 <li>After EdBuild’s sunset, packages <strong>stopped updating</strong> (data only through SY18)</li>
+</ul>
+<p><br></p>
+<ul>
 <li><strong>edfinr</strong> carries on that spirit: opinionated F-33 tidying for policy analysis</li>
 <li>Includes NCES F-33 data <strong>SY12–SY22</strong></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<p><br></p>
+<p><img data-src="../../images/edbuildr.png" style="width: 500px;"></p>
+<p><br></p>
+<p><img data-src="../../images/edfinr_hex.png" style="width: 300px;"></p>
+</div></div>
 <aside class="notes">
 <p>Brief institutional context. Some AEFP audience members may remember EdBuild or have used edbuildr. The key point is that edfinr picks up where EdBuild left off with updated data and a similar philosophy of making F-33 accessible.</p>
 <style type="text/css">
@@ -487,7 +533,7 @@
 <li>Do a deeper independent state analysis</li>
 </ul>
 </section>
-<section class="slide level2" data-background-color="#007786">
+<section class="slide level2 white-text" data-background-color="#0D525A">
 <h2>Let’s go!</h2>
 <h3>Up next: Federal COVID Stimulus Expenditure Analysis</h3>
 
@@ -816,7 +862,7 @@
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/bwedfinance\.github\.io\/edfinr-workshop-aefp26\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
