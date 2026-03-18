@@ -18,7 +18,7 @@ $font-family-monospace: $font-family-mono;
 
 // Section divider slides
 .reveal .slide-background-content[style*="navy"],
-section.title-slide {
+section.title-slide:not([data-background-color]) {
   background-color: $bw-teal;
 }
 
@@ -36,6 +36,7 @@ section.title-slide {
 .reveal h2 {
   padding-bottom: 0.3em;
   border-bottom: 3px solid $bw-gold;
+  margin-bottom: 0.8em;
 }
 
 // Code blocks
@@ -50,6 +51,19 @@ section.title-slide {
   color: $bw-light-blue;
 }
 
+// Navigation controls and progress bar
+.reveal .controls button {
+  color: $bw-teal;
+}
+
+.reveal .slide-menu-button .fa-bars::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(0, 119, 134)" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>');
+}
+
+.reveal .progress span {
+  background: $bw-teal;
+}
+
 // Callout styling in slides
 .reveal .callout-tip {
   border-left: 4px solid $bw-gold;
@@ -60,4 +74,19 @@ section.title-slide {
 .reveal .aside {
   font-size: 0.6em;
   color: $bw-light-blue;
+}
+
+// White text for teal background slides
+.white-text {
+  color: #ffffff !important;
+
+  h1, h2 {
+    color: #ffffff !important;
+    border-bottom-color: $bw-gold !important;
+  }
+
+  a {
+    color: #ffffff !important;
+    text-decoration: underline;
+  }
 }

@@ -11,13 +11,20 @@ By the end of this exercise, you will reproduce and extend the **COVID recovery 
 Save your favorite plot using the naming convention `firstname_analysis_description.png` and upload it to the [shared Google Drive folder](https://drive.google.com/drive/folders/1JwmVtz0OA7nOz89DOHGzH3gddiG5VR_a?usp=drive_link).
 :::
 
+## Part 0: Get your R script ready
+
+You have a few options at your disposal:
+
+- Clone [the entire repo for this workshop](https://github.com/bwedfinance/edfinr-workshop-aefp26/), then navigate to `exercises/state-analysis.R`
+- Go to [the GitHub page for the `state_analysis.R` script](https://github.com/bwedfinance/edfinr-workshop-aefp26/blob/main/exercises/state-analysis.R), then copy/paste that code into a blank R script in your IDE of choice
+- Write out the code by hand, toggling back and forth with this page (least compelling option, IMO)
+
 ## Part 1: Setup
 
 Load your libraries and pick a state. We'll start with a **single year** to explore the data before scaling up to multi-year analysis.
 
 ```{r}
 #| label: setup
-#| echo: false
 #| message: false
 #| warning: false
 library(tidyverse)

@@ -32,17 +32,21 @@ execute:
 #| file: ../../_slides-setup.R
 ```
 
-# The story in the data {background-color="#007786"}
+# The story in the data {background-color="#0D525A" .white-text}
 
 ## What happened to K-12 funding during COVID?
 
 Congress passed three rounds of **Elementary and Secondary School Emergency Relief** (ESSER) funds:
+
+<br>
 
 | Round | Law | Amount | Deadline |
 |---|---|---|---|
 | ESSER I | CARES Act (Mar 2020) | $13.2B | Sep 2022 |
 | ESSER II | CRRSA Act (Dec 2020) | $54.3B | Sep 2023 |
 | ESSER III | ARP Act (Mar 2021) | $122B | Sep 2024 |
+
+<br>
 
 **$190 billion** in new federal K-12 spending -- unprecedented.
 
@@ -62,13 +66,13 @@ This means we can track the **spending timeline** across years.
 
 ## Our analysis plan
 
-1. Pull multi-year pandemic-era data with **range syntax**
-2. Clean and select key variables
+1. Pull multi-year pandemic-era data via `edfinr`
+2. `select()` key variables for analysis
 3. Calculate per-pupil expenditures with `across()`
-4. Explore COVID spending vs. student poverty
-5. Filter to a single state for deeper analysis
+4. Explore COVID spending vs. student poverty via `ggplot2`
+5. `filter()` to a single state for deeper analysis
 
-# Getting the data {background-color="#007786"}
+# Getting the data {background-color="#0D525A" .white-text}
 
 ## Pulling pandemic-era data
 
@@ -76,7 +80,7 @@ edfinr's `yr` argument accepts a **range string** — no need for `map()`:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "2|3"
+#| code-line-numbers: "|2|3"
 covid_yrs <- get_finance_data(
   yr = "2020:2022",
   dataset_type = "full"
@@ -159,7 +163,7 @@ This gives us a 0-1 measure of how each district prioritized instruction with th
 This is a policy-relevant question. Congress gave districts flexibility in how to spend ESSER funds. Some districts prioritized tutoring and instruction, others spent on HVAC, staffing, or technology. The instructional share tells us where each district fell.
 :::
 
-# COVID spending and poverty {background-color="#007786"}
+# COVID spending and poverty {background-color="#0D525A" .white-text}
 
 ## Building the scatter plot
 
@@ -197,7 +201,7 @@ Now we add a trend line, clean up the scales, and facet by year:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "|1-6|7-14|15-16"
+#| code-line-numbers: "|1-6|7-14|15"
   geom_smooth(
     aes(
       x = stpov_pct,
@@ -212,8 +216,7 @@ Now we add a trend line, clean up the scales, and facet by year:
     max_size = 10,
     labels = label_comma()
   ) +
-  facet_wrap(~year, nrow = 2) +
-  theme_bw()
+  facet_wrap(~year)
 ```
 
 - `geom_smooth(method = "lm")` adds a **linear regression** line
@@ -230,7 +233,8 @@ Putting it all together with labels:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "|1-2|3-5"
+#| code-line-numbers: "|1-4|5-11"
+  theme_bw() +
   theme(
     plot.caption = element_text(hjust = 0)
   ) +
@@ -247,18 +251,21 @@ Putting it all together with labels:
 Show the complete rendered plot if you have a pre-rendered version. Walk through the interpretation: upward slope confirms higher-poverty districts spent more COVID funds per pupil, as intended by the Title I formula allocation. The color gradient shows variation in how districts used the money.
 :::
 
-## Reading the chart
-
-What should you see?
+## What should we expect to see?
 
 - **Upward slope**: Higher-poverty districts spent more COVID funds per pupil (Title I formula working as intended)
-- **Color gradient**: Wide variation in instructional share — some districts used ESSER mostly for instruction, others for facilities or staffing
+- **Color gradient**: Wide variation in instructional share — some districts used ESSER mostly for instruction, others didn't
 - **Size variation**: Smaller districts show more extreme values (both high and low)
 - **Year panels**: Spending increases from 2020 to 2022 as districts drew down ESSER II and III
 
-The scatter plot tells a **richer story** than a bar chart — we see the relationship between poverty and spending, not just totals.
 
-# Zooming into one state {background-color="#007786"}
+## Here's the result!
+
+:::{style="text-align: center;"}
+![](../../images/esser_plot_nationwide.png){width="80%"}
+:::
+
+# Zooming into one state {background-color="#0D525A" .white-text}
 
 ## Filtering to Kentucky
 
@@ -266,7 +273,7 @@ The same analysis works for any state with a single `filter()`:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "1"
+#| code-line-numbers: "|1"
 ggplot(data = covid_exp |> filter(state == "KY")) +
   geom_point(
     aes(
@@ -291,7 +298,7 @@ ggplot(data = covid_exp |> filter(state == "KY")) +
     max_size = 10,
     labels = label_comma()
   ) +
-  facet_wrap(~year, nrow = 2) +
+  facet_wrap(~year) +
   theme_bw() +
   theme(
     plot.caption = element_text(hjust = 0)
@@ -311,6 +318,13 @@ The only change is line 1 — everything else is identical. This is the power of
 This is the bridge to independent work. Show that you can swap `"KY"` for any state abbreviation. Ask: what state do you want to explore? In the exercise, fellows will filter to their own state and interpret the results.
 :::
 
+## Zooming in on one state = a more interesting story
+
+:::{style="text-align: center;"}
+![](../../images/esser_plot_kentucky.png){width="80%"}
+:::
+
+
 ## Saving your work
 
 Use `ggsave()` to export publication-ready plots:
@@ -318,7 +332,7 @@ Use `ggsave()` to export publication-ready plots:
 ```{r}
 #| eval: false
 ggsave(
-  "covid_analysis_ky.png",
+  "esser_plot_kentucky.png",
   units = "in",
   height = 6,
   width = 10
@@ -331,8 +345,8 @@ ggsave(
 Remind fellows that `ggsave()` defaults to the last plot displayed. If they want to save a specific plot, they should assign it to a variable and pass it as the `plot` argument.
 :::
 
-## Your turn! {background-color="#007786"}
+## Your turn! {background-color="#0D525A" .white-text}
 
 ### Time for independent state analysis
 
-Open the exercise file and pick a state to explore.
+Open the exercise page on the workshop website and pick a state to explore.

@@ -13,3 +13,6 @@ _site/
 
 # claude
 CLAUDE.md
+
+/.quarto/
+**/*.quarto_ipynb

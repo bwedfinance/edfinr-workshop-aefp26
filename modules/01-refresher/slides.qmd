@@ -32,7 +32,7 @@ execute:
 #| file: ../../_slides-setup.R
 ```
 
-# Welcome! {background-color="#007786"}
+# Welcome! {background-color="#0D525A" .white-text}
 
 ## Today's plan
 
@@ -46,7 +46,49 @@ execute:
 Welcome fellows back. Acknowledge that they've already worked with edfinr in February -- today's material is all new. Quick orientation to the schedule.
 :::
 
-## The F-33 survey
+## About Bellwether {background-color="#0D525A" .white-text}
+
+Bellwether envisions a future where *all* young people have access to an [**excellent**]{style="color: #FFB653;"} education, and live lives [**filled with opportunity**]{style="color: #FFB653;"}.
+
+Bellwether is a national nonprofit that works hand in hand with education leaders and organizations to accelerate their impact, inform and influence policy and program design, and share what we learn along the way.
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="20%"}
+![](../../images/spurrier-circle.png){style="width: 300px;"}
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+**Alex Spurrier**
+
+*Associate Partner* <br>
+[Alex.Spurrier@bellwether.org](mailto:Alex.Spurrier@bellwether.org) <br>
+[www.linkedin.com/in/alspur](https://www.linkedin.com/in/alspur)
+:::
+
+
+
+::::
+
+## About Our State School Finance Initiative {background-color="#0D525A" .white-text}
+
+Education finance [**sets the foundation**]{style="color: #FFB653;"} for what is possible in every school in the country. Education finance equity is essential to leveling the playing field for marginalized students in under-resourced schools and communities.
+
+<br>
+
+Bellwether’s work in state education finance equity aims to improve funding systems, state by state, through:
+
+- [**Analyses**]{style="color: #FFB653;"} that shape the public conversation on education finance and help advocates and policymakers understand and improve finance policies in their states.
+- [**Trainings**]{style="color: #FFB653;"} that equip state advocates with policy knowledge and data modeling skills to unlock the potential for policy reforms.
+- [**Capacity-building**]{style="color: #FFB653;"} support, policy advising, and technical modeling assistance for state advocacy groups or public agencies in states on the precipice of enacting change.
+
+
+## What is the F-33 survey?
 
 The **Annual Survey of School System Finances** (F-33) is administered by the U.S. Census Bureau on behalf of NCES.
 
@@ -55,19 +97,35 @@ The **Annual Survey of School System Finances** (F-33) is administered by the U.
 - Form is fairly consistent year-to-year; recent additions include **COVID relief expenditure** tracking
 - The **only source** of comparable, highly-detailed LEA-level finance data
 
-Sounds great...so what's the catch?
+<br>
+
+**Sounds great! So what's the catch?**
 
 ::: {.notes}
 Fuller treatment of the F-33 for AEFP audience members who may not have worked with it directly. Emphasize "universe not sample" and the uniqueness of the data source. The hook at the end sets up the next slide on data messiness.
 :::
 
-## The catch: F-33 data is messy
+## It turns out that F-33 data is messy
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+<br>
+
+![](../../images/kondo.png){style="width: 500px;"}
+:::
+
+:::{.column width="60%"}
+<br>
 
 **Census version** issues:
 
 - Revenue and expenditure values need a **×1,000 multiplier**
 - C24 state/local revenue adjustment applies in some states
 - **No charter school LEAs** included
+
+<br>
 
 **NCES version**: long release lag time
 
@@ -76,6 +134,9 @@ Fuller treatment of the F-33 for AEFP audience members who may not have worked w
 - Special-purpose and outlier LEAs
 - Pass-through payments and tuition to other systems
 - One-time property sales inflating local revenue
+:::
+
+::::
 
 ::: {.notes}
 This motivates why a package like edfinr is valuable -- you don't want every analyst reinventing these cleaning decisions. The Census vs. NCES version distinction is something even experienced F-33 users may not have thought about carefully.
@@ -83,10 +144,37 @@ This motivates why a package like edfinr is valuable -- you don't want every ana
 
 ## From EdBuild to edfinr
 
+:::: {.columns}
+
+
+::: {.column width="60%"}
+
+<br>
+
+
 - **EdBuild** created `edbuildr` and `edbuildmapr` -- early effort to make F-33 data accessible in R
 - After EdBuild's sunset, packages **stopped updating** (data only through SY18)
+
+<br>
+
 - **edfinr** carries on that spirit: opinionated F-33 tidying for policy analysis
 - Includes NCES F-33 data **SY12–SY22**
+
+:::
+
+::: {.column width="40%"}
+
+<br>
+
+![](../../images/edbuildr.png){style="width: 500px;"}
+
+<br>
+
+![](../../images/edfinr_hex.png){style="width: 300px;"}
+
+:::
+
+::::
 
 ::: {.notes}
 Brief institutional context. Some AEFP audience members may remember EdBuild or have used edbuildr. The key point is that edfinr picks up where EdBuild left off with updated data and a similar philosophy of making F-33 accessible.
@@ -194,6 +282,6 @@ Today, we'll:
 - Analyze **COVID recovery fund spending** patterns
 - Do a deeper independent state analysis
 
-## Let's go! {background-color="#007786"}
+## Let's go! {background-color="#0D525A" .white-text}
 
 ### Up next: Federal COVID Stimulus Expenditure Analysis
