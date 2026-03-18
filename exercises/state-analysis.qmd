@@ -8,7 +8,7 @@ subtitle: "Application Exercise"
 By the end of this exercise, you will reproduce and extend the **COVID recovery fund scatter plot** from the slides, analyzing the relationship between student poverty and ESSER spending in a state of your choice.
 
 :::{.callout-note title="Sharing your work"}
-Save your favorite plot using the naming convention `firstname_analysis_description.png` and upload it to the [shared Google Drive folder](https://drive.google.com/drive/folders/1JwmVtz0OA7nOz89DOHGzH3gddiG5VR_a?usp=drive_link).
+Save your favorite plot using the naming convention `firstname_analysis_description.png` and upload it to the [shared Google Drive folder](https://drive.google.com/drive/folders/1LrM_9lnmdHWJBPHmuvLDdx2fdod9VOtx).
 :::
 
 ## Part 0: Get your R script ready
@@ -527,7 +527,7 @@ ggsave(
 )
 ```
 
-Upload your saved plot to the [shared Google Drive folder](https://drive.google.com/drive/folders/1JwmVtz0OA7nOz89DOHGzH3gddiG5VR_a?usp=drive_link).
+Upload your saved plot to the [shared Google Drive folder](https://drive.google.com/drive/folders/1LrM_9lnmdHWJBPHmuvLDdx2fdod9VOtx).
 
 ### Quality checklist
 
