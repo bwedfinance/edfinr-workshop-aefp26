@@ -225,7 +225,7 @@ Walk through each argument. Remind them that `yr` refers to the spring year of t
 
 | | Skinny | Full |
 |---|---|---|
-| **Variables** | ~20 key finance vars | 100+ detailed vars |
+| **Variables** | 41 vars | 89 vars |
 | **Best for** | Quick analysis, per-pupil comparisons | Deep dives, expenditure breakdowns |
 | **Speed** | Fast | Larger download |
 
